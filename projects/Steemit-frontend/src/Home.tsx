@@ -1,5 +1,6 @@
 import { useWallet } from '@txnlab/use-wallet'
 import React, { useState } from 'react'
+import { Vortex } from '../src/components/ui/vortex'
 import AppCalls from './components/AppCalls'
 import ConnectWallet from './components/ConnectWallet'
 import Transact from './components/Transact'
@@ -24,63 +25,54 @@ const Home: React.FC<HomeProps> = () => {
     setAppCallsDemoModal(!appCallsDemoModal)
   }
 
-  // Mock data for videos
-  const videos = [
-    {
-      id: 1,
-      title: 'Introduction to AlgoKit',
-      thumbnail: 'https://via.placeholder.com/320x180',
-      channel: 'AlgoKit Tutorials',
-      views: '1.2M views',
-      timestamp: '2 weeks ago',
-    },
-    {
-      id: 2,
-      title: 'Building Smart Contracts with Algorand',
-      thumbnail: 'https://via.placeholder.com/320x180',
-      channel: 'Blockchain Academy',
-      views: '800K views',
-      timestamp: '1 month ago',
-    },
-    {
-      id: 3,
-      title: 'Getting Started with React and AlgoKit',
-      thumbnail: 'https://via.placeholder.com/320x180',
-      channel: 'React Pro',
-      views: '500K views',
-      timestamp: '3 days ago',
-    },
-    // Add more videos as needed
-  ]
-
   return (
-    <div className="min-h-screen bg-gray-900  text-white ">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Navbar */}
-      <nav className="bg-gray-800 p-4">
+      <nav className="bg-black p-4">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold">AlgoTube</h1>
-          <button data-test-id="connect-wallet" className="btn btn-primary" onClick={toggleWalletModal}>
-            {activeAddress ? 'Connected' : 'Connect Wallet'}
-          </button>
+          <div className="flex space-x-4">
+            {activeAddress && (
+              <>
+                <button
+                  className="bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-4 rounded"
+                  onClick={toggleDemoModal}
+                >
+                  Transact
+                </button>
+                <button
+                  className="bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded"
+                  onClick={toggleAppCallsModal}
+                >
+                  AppCalls
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </nav>
 
-      {/* Main Content */}
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {videos.map((video) => (
-            <div key={video.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-              <img src={video.thumbnail} alt={video.title} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h2 className="font-bold text-lg">{video.title}</h2>
-                <p className="text-sm text-gray-400">{video.channel}</p>
-                <p className="text-sm text-gray-400">
-                  {video.views} • {video.timestamp}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="w-full mx-auto rounded-md h-screen overflow-hidden">
+        <Vortex
+          backgroundColor="black"
+          rangeY={800}
+          particleCount={500}
+          baseHue={120}
+          className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+        >
+          <h2 className="text-white text-2xl md:text-6xl font-bold text-center">SteemIt</h2>
+          <p className="text-white text-sm md:text-2xl max-w-xl mt-6 text-center">Welcomes You :)</p>
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+            <button
+              data-test-id="connect-wallet"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={toggleWalletModal}
+            >
+              {activeAddress ? 'Connected' : 'Connect Wallet'}
+            </button>
+            <button className="px-4 py-2 text-white">Watch trailer</button>
+          </div>
+        </Vortex>
       </div>
 
       {/* Modals */}

@@ -48,7 +48,7 @@ const Transact = ({ openModal, setModalState }: TransactInterface) => {
   return (
     <dialog id="transact_modal" className={`modal ${openModal ? 'modal-open' : ''} bg-slate-200`}>
       <form method="dialog" className="modal-box">
-        <h3 className="font-bold text-lg">Send payment transaction</h3>
+        <h3 className="text-black font-bold text-lg">Send payment transaction</h3>
         <br />
         <input
           type="text"

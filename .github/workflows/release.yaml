@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  Steemit-contracts-validate:
+    name: Run Steemit-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/Steemit-contracts-ci.yaml
+
+  Steemit-contracts-release:
+    name: Run Steemit-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/Steemit-contracts-cd.yaml
+    needs: Steemit-contracts-validate
+
+  Steemit-frontend-validate:
+    name: Run Steemit-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/Steemit-frontend-ci.yaml
+
+  Steemit-frontend-release:
+    name: Run Steemit-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/Steemit-frontend-cd.yaml
+    needs: Steemit-frontend-validate

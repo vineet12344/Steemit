@@ -1,0 +1,11 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 2.0.16
+_src_path: gh:algorandfoundation/algokit-fullstack-template
+author_email: vineetsalve0@gmail.com
+author_name: Vineet
+cloud_provider: none
+contract_name: subscription_contract
+deployment_language: python
+preset_name: production
+project_name: Steemit
+

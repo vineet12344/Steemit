@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  Steemit-contracts-ci:
+    name: Run Steemit-contracts validation
+    uses: ./.github/workflows/Steemit-contracts-ci.yaml
+
+  Steemit-frontend-ci:
+    name: Run Steemit-frontend validation
+    uses: ./.github/workflows/Steemit-frontend-ci.yaml
+

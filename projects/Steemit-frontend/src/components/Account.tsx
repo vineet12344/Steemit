@@ -12,8 +12,8 @@ const Account = () => {
   }, [algoConfig.network])
 
   return (
-    <div>
-      <a className="text-xl" target="_blank" href={`https://lora.algokit.io/${networkName}/account/${activeAddress}/`}>
+    <div className=' text-black'>
+      <a className="text-xl text-black" target="_blank"  href={`https://lora.algokit.io/${networkName}/account/${activeAddress}/`}>
         Address: {ellipseAddress(activeAddress)}
       </a>
       <div className="text-xl">Network: {networkName}</div>

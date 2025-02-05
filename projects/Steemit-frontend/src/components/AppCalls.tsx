@@ -1,10 +1,10 @@
+import { AlgorandClient } from '@algorandfoundation/algokit-utils'
+import { OnSchemaBreak, OnUpdate } from '@algorandfoundation/algokit-utils/types/app'
 import { useWallet } from '@txnlab/use-wallet'
 import { useSnackbar } from 'notistack'
 import { useState } from 'react'
 import { SubscriptionContractFactory } from '../contracts/SubscriptionContract'
-import { OnSchemaBreak, OnUpdate } from '@algorandfoundation/algokit-utils/types/app'
 import { getAlgodConfigFromViteEnvironment, getIndexerConfigFromViteEnvironment } from '../utils/network/getAlgoClientConfigs'
-import { AlgorandClient } from '@algorandfoundation/algokit-utils'
 
 interface AppCallsInterface {
   openModal: boolean
@@ -69,7 +69,7 @@ const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
   }
 
   return (
-    <dialog id="appcalls_modal" className={`modal ${openModal ? 'modal-open' : ''} bg-slate-200`}>
+    <dialog id="appcalls_modal" className={`modal ${openModal ? 'modal-open' : ''} bg-slate-700`}>
       <form method="dialog" className="modal-box">
         <h3 className="font-bold text-lg">Say hello to your Algorand smart contract</h3>
         <br />
